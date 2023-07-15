@@ -8,8 +8,8 @@ export default async (req, res) => {
           case "POST":
             let bodyObject = JSON.parse(req.body);
             let newMessage = await db.collection("messages").insertOne(bodyObject);
-            console.log(newMessage); 
-            res.json(newMessage.ops[0]);
+            // console.log(newMessage); 
+            res.json(newMessage);
             break;
           case "GET":
             const messages = await db.collection("messages").find({}).toArray();

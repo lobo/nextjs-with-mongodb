@@ -29,12 +29,16 @@ export default function Home({ isConnected }) {
         date: dateStr,
         content: content,
       }),
-    });
+    }).then(async res => {
+      console.log("message was sent!");
+      setContent("");
+      setLoading(false);
+  });
     // res = await res.json();
 
-    console.log("asdasdsa");
-    setContent("");
-    setLoading(false);
+    // console.log("asdasdsa");
+    // setContent("");
+    // setLoading(false);
   };
 
 
@@ -61,6 +65,9 @@ export default function Home({ isConnected }) {
         <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
+            name="content"
+            type="text"
+            value={content}
             style={{ width: '100%', minHeight: '200px', display: 'block' }}
             placeholder='Enter message...'
             onChange={(e) => setContent(e.target.value)}
