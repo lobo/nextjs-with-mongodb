@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 
 export default function Home({ isConnected }) {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
+  const NEXT_URL =
+  process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
   
-
   let submitForm = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -23,7 +24,7 @@ export default function Home({ isConnected }) {
       ("00" + date.getSeconds()).slice(-2);
     
     console.log(dateStr);
-    await fetch("http://localhost:3000/api/messages", {
+    await fetch(NEXT_URL+"/api/messages", {
       method: "POST",
       body: JSON.stringify({
         date: dateStr,
