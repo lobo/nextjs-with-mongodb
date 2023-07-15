@@ -4,15 +4,18 @@ export default async (req, res) => {
     try {
         const client = await clientPromise;
         const db = client.db("gasparindb");
-
-        const messages = await db
-            .collection("messages")
-            .find({})
-            .sort({ metacritic: -1 })
-            // .limit(10)
-            .toArray();
-
-        res.json(messages);
+        switch (req.method) {
+          case "POST":
+            let bodyObject = JSON.parse(req.body);
+            let newMessage = await db.collection("messages").insertOne(bodyObject);
+            console.log(newMessage); 
+            res.json(newMessage.ops[0]);
+            break;
+          case "GET":
+            const messages = await db.collection("messages").find({}).toArray();
+            res.json({ status: 200, data: messages });
+            break;
+        }
     } catch (e) {
         console.error(e);
     }

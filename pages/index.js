@@ -1,7 +1,43 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
+import React, { useEffect, useState } from "react";
+
 
 export default function Home({ isConnected }) {
+  const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
+  
+
+  let submitForm = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    // set the date
+    let date = new Date();
+    let dateStr =
+      ("00" + date.getDate()).slice(-2) + "/" +
+      ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+      date.getFullYear() + " " +
+      ("00" + date.getHours()).slice(-2) + ":" +
+      ("00" + date.getMinutes()).slice(-2) + ":" +
+      ("00" + date.getSeconds()).slice(-2);
+    
+    console.log(dateStr);
+    await fetch("http://localhost:3000/api/messages", {
+      method: "POST",
+      body: JSON.stringify({
+        date: dateStr,
+        content: content,
+      }),
+    });
+    // res = await res.json();
+
+    console.log("asdasdsa");
+    setContent("");
+    setLoading(false);
+  };
+
+
   return (
     <div className="container">
       <Head>
@@ -21,11 +57,24 @@ export default function Home({ isConnected }) {
             No connection ❌
           </h2>
         )}
-
-          <textarea className="mediumfont" style={{ width: '100%', minHeight: '200px', display: 'block' }} placeholder='Enter message...'></textarea>
-          <button className="bigfont" style={{ width: '100%', display: 'block' }} type="submit">Send! 🚀</button>
-        <div className='grid'>
-        </div>
+      
+        <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
+          <textarea
+            className="mediumfont"
+            style={{ width: '100%', minHeight: '200px', display: 'block' }}
+            placeholder='Enter message...'
+            onChange={(e) => setContent(e.target.value)}
+          >
+          </textarea>
+          <button
+            className="bigfont"
+            style={{ width: '100%', display: 'block' }}
+            type="submit"
+            disabled={loading ? true : false}
+          >
+            {loading ? "Sending..." : "Send! 🚀"}
+          </button>
+        </form>
       </main>
 
       <footer>

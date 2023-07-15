@@ -3,17 +3,17 @@ import clientPromise from "../lib/mongodb";
 export default function Messages({ messages }) {
     return (
         <div>
-            <h1>All messages</h1>
-            <ul>
+            <h1>All messages (newest on top)</h1>
+            <ol>
                 {messages.map((msj) => (
-                    <li>
-                        {/* <h2>{msj.title}</h2>
-                        <h3>{msj.metacritic}</h3>
-                        <p>{msj.plot}</p> */}
+                    <li key={msj._id}>
+                        {/* <h2>{msj.title}</h2> */}
+                        <h3>🗓️ {msj.date}</h3>
+                        {/* <p>{msj.date}</p> */}
                         <p>{msj.content}</p>
                     </li>
                 ))}
-            </ul>
+            </ol>
         </div>
     );
 }
@@ -27,7 +27,7 @@ export async function getServerSideProps(context) {
         const messages = await db
             .collection("messages")
             .find({})
-            // .sort({ metacritic: -1 })
+            .sort({ date: -1 })
             // .limit(20)
             .toArray();
 
