@@ -11,25 +11,21 @@ export default function Home({ isConnected }) {
 
       <main>
         <h1 className="title">
-          {/* Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a> */}
           Wimpy Kid
         </h1>
 
         {isConnected ? (
-          <h2 className="subtitle">Connected! ✅</h2>
+          <h2 className="subtitle">...is connected! ✅</h2>
         ) : (
           <h2 className="subtitle">
-            {/* You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
-            for instructions. */}
             No connection ❌
           </h2>
         )}
 
-        {/* <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p> */}
-      <textarea className='textinput' placeholder='Enter message...'></textarea>
-      <button style={{ width: '100%', display: 'block' }} type="submit">Send! 🚀</button>
+          <textarea className="mediumfont" style={{ width: '100%', minHeight: '200px', display: 'block' }} placeholder='Enter message...'></textarea>
+          <button className="bigfont" style={{ width: '100%', display: 'block' }} type="submit">Send! 🚀</button>
+        <div className='grid'>
+        </div>
       </main>
 
       <footer>
@@ -39,11 +35,10 @@ export default function Home({ isConnected }) {
       <style jsx>{`
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
+          padding: 0 2.5rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center;
         }
 
         main {
@@ -110,6 +105,16 @@ export default function Home({ isConnected }) {
           font-size: 1.5rem;
         }
 
+        .mediumfont {
+          line-height: 1;
+          font-size: 1rem;
+        }
+
+        .bigfont {
+          line-height: 1.5;
+          font-size: 1.5rem;
+        }
+
         code {
           background: #fafafa;
           border-radius: 5px;
@@ -126,7 +131,7 @@ export default function Home({ isConnected }) {
           flex-wrap: wrap;
 
           max-width: 800px;
-          margin-top: 3rem;
+          margin-top: 1rem;
         }
 
         .card {
