@@ -63,7 +63,7 @@ export default function Home({ isConnected }) {
           </h2>
         )}
 
-        <h2 className="subtitle">Smart and young padawan 💪</h2>
+        <h2 className="subtitle">More messages... or goodbye battlestation 💥😱</h2>
         <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
