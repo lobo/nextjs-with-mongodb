@@ -1,4 +1,6 @@
 import clientPromise from "../../lib/mongodb";
+import moment from 'moment';
+
 
 export default async (req, res) => {
     try {
@@ -7,6 +9,8 @@ export default async (req, res) => {
         switch (req.method) {
           case "POST":
             let bodyObject = JSON.parse(req.body);
+            var fecha = moment(bodyObject.date);
+            bodyObject.date = fecha.format('MMMM Do YYYY, h:mm:ss a');
             let newMessage = await db.collection("messages").insertOne(bodyObject);
             // console.log(newMessage); 
             res.json(newMessage);

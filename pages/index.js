@@ -15,19 +15,19 @@ export default function Home({ isConnected }) {
 
     // set the date
     let date = new Date();
-    let dateStr =
-      ("00" + date.getDate()).slice(-2) + "/" +
-      ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
-      date.getFullYear() + " " +
-      ("00" + date.getHours()).slice(-2) + ":" +
-      ("00" + date.getMinutes()).slice(-2) + ":" +
-      ("00" + date.getSeconds()).slice(-2);
+    // let dateStr =
+    //   ("00" + date.getDate()).slice(-2) + "/" +
+    //   ("00" + (date.getMonth() + 1)).slice(-2) + "/" +
+    //   date.getFullYear() + " " +
+    //   ("00" + date.getHours()).slice(-2) + ":" +
+    //   ("00" + date.getMinutes()).slice(-2) + ":" +
+    //   ("00" + date.getSeconds()).slice(-2);
     
-    console.log(dateStr);
+    // console.log(dateStr);
     await fetch(NEXT_URL+"/api/messages", {
       method: "POST",
       body: JSON.stringify({
-        date: dateStr,
+        date: date,
         content: content,
       }),
     }).then(async res => {
