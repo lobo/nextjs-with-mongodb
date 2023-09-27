@@ -72,6 +72,7 @@ export default function Home({ isConnected }) {
         <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
         
           {/* Fecha */}    
+          <p align='center'>🗓️ When?</p>
           <input
             type="date"
             id="fecha"
