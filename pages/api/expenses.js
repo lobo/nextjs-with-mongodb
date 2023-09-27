@@ -10,15 +10,14 @@ export default async (req, res) => {
           case "POST":
             let bodyObject = JSON.parse(req.body);
             var fecha = moment(bodyObject.date);
-            bodyObject.date = fecha.format('MMMM Do YYYY, h:mm:ss a');
-            console.log(bodyObject);
-            let newMessage = await db.collection("messages").insertOne(bodyObject);
-            // console.log(newMessage); 
-            res.json(newMessage);
+            bodyObject.saved_at = fecha.format('MMMM Do YYYY, h:mm:ss a');
+            let newExpense = await db.collection("expenses").insertOne(bodyObject);
+            // console.log(newExpense); 
+            res.json(newExpense);
             break;
           case "GET":
-            const messages = await db.collection("messages").find({}).toArray();
-            res.json({ status: 200, data: messages });
+            const expenses = await db.collection("expenses").find({}).toArray();
+            res.json({ status: 200, data: expenses });
             break;
         }
     } catch (e) {
