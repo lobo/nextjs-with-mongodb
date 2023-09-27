@@ -77,7 +77,7 @@ export default function Home({ isConnected }) {
             id="fecha"
             value={fecha}
             name="fecha"
-            style={{ width: '100%', minHeight: '50px', marginBottom: 10, display: 'block' }}
+            style={{ width: '100%', align: "center", minHeight: '100px', marginBottom: 10, display: 'block' }}
             onChange={(e) => setFecha(e.target.value)}
           />
 
@@ -87,7 +87,7 @@ export default function Home({ isConnected }) {
           <select
             name="person"
             onChange={(e) => setPerson(e.target.value)}
-            style={{ width: '100%', minHeight: '50px', marginBottom: 10, display: 'block' }}
+            style={{ width: '100%', minHeight: '100px', marginBottom: 10, display: 'block' }}
             id="person"
             value={person}
           >
@@ -101,7 +101,7 @@ export default function Home({ isConnected }) {
           <select
             name="category"
             onChange={(e) => setCategory(e.target.value)}
-            style={{ width: '100%', minHeight: '50px', marginBottom: 10, display: 'block' }}
+            style={{ width: '100%', minHeight: '100px', marginBottom: 10, display: 'block' }}
             id="category"
             value={category}
           >
@@ -128,17 +128,19 @@ export default function Home({ isConnected }) {
           </select>
           
           {/* Amount */}   
+          <p align='center'>💸 Cantidad 👇</p>
           <input
             type="number"
-            id="amount"
             value={amount}
             name="amount"
             min="1" 
             style={{ width: '100%', minHeight: '50px', marginBottom: 10, display: 'block' }}
+            placeholder='Enter amount...'
             onChange={(e) => setAmount(e.target.value)}
           />
 
           {/* Comments */}    
+          <p align='center'>⌨️ Comments 👇</p>
           <textarea
             className="mediumfont"
             name="content"
