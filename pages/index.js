@@ -54,7 +54,8 @@ export default function Home({ isConnected }) {
           </h2>
         )}
 
-        <h2 className="subtitle">How are you doing? 😇</h2>
+        <h2 className="subtitle">🍑 culo culo culo 🍑</h2>
+        <h2 className="subtitle">Miss you too 🥰</h2>
         <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
