@@ -55,8 +55,8 @@ export default function Home({ isConnected }) {
         )}
 
         
-        <h2 className="subtitle">22 december received! 🐺</h2>
-        <h2 className="subtitle">we do miss you a lot brave boy</h2>
+        <h2 className="subtitle">22 december: more messages received 🧚🏻 THANK YOU</h2>
+        <h2 className="subtitle">💞 Try to relax and sleep well, love you very much 💞</h2>
         <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
