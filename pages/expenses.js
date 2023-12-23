@@ -178,7 +178,7 @@ export default function Home({ isConnected }) {
         }
 
         main {
-          padding: 5rem 0;
+          padding: 1 rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;

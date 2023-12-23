@@ -1,38 +1,36 @@
-import Head from 'next/head'
-import clientPromise from '../lib/mongodb'
+import Head from "next/head";
+import clientPromise from "../lib/mongodb";
 import React, { useState } from "react";
-
 
 export default function Home({ isConnected }) {
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
   const NEXT_URL =
-  process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
-  
+    process.env.NEXT_PUBLIC_FRONTEND_URL || "http://localhost:3000";
+
   let submitForm = async (e) => {
     setLoading(true);
     e.preventDefault();
 
     // set the date
     let date = new Date();
-    await fetch(NEXT_URL+"/api/messages", {
+    await fetch(NEXT_URL + "/api/messages", {
       method: "POST",
       body: JSON.stringify({
         date: date,
         content: content,
       }),
-    }).then(async res => {
+    }).then(async (res) => {
       console.log("message was sent!");
       setContent("");
       setLoading(false);
-  });
+    });
     // res = await res.json();
 
     // console.log("asdasdsa");
     // setContent("");
     // setLoading(false);
   };
-
 
   return (
     <div className="container">
@@ -42,33 +40,28 @@ export default function Home({ isConnected }) {
       </Head>
 
       <main>
-        <h1 className="title">
-          Wimpy Kid
-        </h1>
+        <h1 className="title">Wimpy Kid</h1>
 
         {isConnected ? (
           <h2 className="subtitle">...is connected! ✅</h2>
         ) : (
-          <h2 className="subtitle">
-            No connection ❌
-          </h2>
+          <h2 className="subtitle">No connection ❌</h2>
         )}
 
         <h2 className="subtitle">How are you doing? 😇</h2>
-        <form style={{ width: '100%', display: 'block' }} onSubmit={submitForm}>
+        <form style={{ width: "100%", display: "block" }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
             name="content"
             type="text"
             value={content}
-            style={{ width: '100%', minHeight: '200px', display: 'block' }}
-            placeholder='Enter message...'
+            style={{ width: "100%", minHeight: "200px", display: "block" }}
+            placeholder="Enter message..."
             onChange={(e) => setContent(e.target.value)}
-          >
-          </textarea>
+          ></textarea>
           <button
             className="bigfont"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: "100%", display: "block" }}
             type="submit"
             disabled={loading ? true : false}
           >
@@ -77,9 +70,7 @@ export default function Home({ isConnected }) {
         </form>
       </main>
 
-      <footer>
-        "I solemnly swear that I am up to no good"
-      </footer>
+      <footer>"I solemnly swear that I am up to no good"</footer>
 
       <style jsx>{`
         .container {
@@ -231,7 +222,7 @@ export default function Home({ isConnected }) {
           outline: none;
           resize: none;
           border: 1px solid grey;
-      }
+        }
       `}</style>
 
       <style jsx global>{`
@@ -249,12 +240,12 @@ export default function Home({ isConnected }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps(context) {
   try {
-    await clientPromise
+    await clientPromise;
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -266,11 +257,11 @@ export async function getServerSideProps(context) {
 
     return {
       props: { isConnected: true },
-    }
+    };
   } catch (e) {
-    console.error(e)
+    console.error(e);
     return {
       props: { isConnected: false },
-    }
+    };
   }
 }
