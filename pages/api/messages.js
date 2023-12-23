@@ -1,5 +1,5 @@
 import clientPromise from "../../lib/mongodb";
-import moment from "moment";
+const moment = require("moment-timezone");
 
 export default async (req, res) => {
   try {
@@ -9,8 +9,11 @@ export default async (req, res) => {
       case "POST":
         let bodyObject = JSON.parse(req.body);
         var fecha = moment(bodyObject.date);
-        bodyObject.date = fecha.format("MMMM Do YYYY, h:mm:ss a");
-        console.log(bodyObject);
+        // console.log("fecha", fecha);
+        bodyObject.date = fecha
+          .tz("America/Argentina/Buenos_Aires")
+          .format("MMMM Do YYYY, h:mm:ss a");
+        // console.log(bodyObject);
         let newMessage = await db.collection("messages").insertOne(bodyObject);
         // console.log(newMessage);
         res.json(newMessage);
