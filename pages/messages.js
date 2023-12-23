@@ -12,17 +12,19 @@ export default function Messages({ messages }) {
 
   return (
     <div>
-      <h1>Newest on top</h1>
+      <h1>Oldest on top</h1>
       <ol>
-        {messages.map((msj) => (
-          <li key={msj._id}>
-            {/* <h2>{msj.title}</h2> */}
-            <h3>🗓️ {msj.date}</h3>
-            {/* <p>{msj.date}</p> */}
-            {/* {console.log(msj)} */}
-            <p>{msj.content}</p>
-          </li>
-        ))}
+        {messages
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .map((msj) => (
+            <li key={msj._id}>
+              {/* <h2>{msj.title}</h2> */}
+              <h3>🗓️ {msj.date}</h3>
+              {/* <p>{msj.date}</p> */}
+              {/* {console.log(msj)} */}
+              <p>{msj.content}</p>
+            </li>
+          ))}
       </ol>
     </div>
   );
@@ -37,7 +39,7 @@ export async function getServerSideProps(context) {
     const messages = await db
       .collection("messages")
       .find({})
-      .sort({ date: -1 })
+      // .sort({ date: 1 })
       // .limit(20)
       .toArray();
 
