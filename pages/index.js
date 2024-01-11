@@ -43,9 +43,9 @@ export default function Home({ isConnected }) {
         <h1 className="title">Wimpy Kid</h1>
 
         {isConnected ? (
-          <h3 className="subtitle">...is connected! ✅</h2>
+          <h3 className="subtitle">...is connected! ✅</h3>
         ) : (
-          <h3 className="subtitle">No connection ❌</h2>
+          <h3 className="subtitle">No connection ❌</h3>
         )}
 
         
