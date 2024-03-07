@@ -48,6 +48,8 @@ export default function Home({ isConnected }) {
           <h3 className="subtitle">No connection ❌</h3>
         )}
 
+        <h2 className="title">Recibido! LOL</h1>
+
         
         <form style={{ width: "100%", display: "block" }} onSubmit={submitForm}>
           <textarea
