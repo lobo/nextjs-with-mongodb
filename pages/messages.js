@@ -12,16 +12,13 @@ export default function Messages({ messages }) {
 
   return (
     <div>
-      <h1>Oldest on top</h1>
+      <h1>Latest messages on top</h1>
       <ol>
         {messages
-          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
           .map((msj) => (
             <li key={msj._id}>
-              {/* <h2>{msj.title}</h2> */}
               <h3>🗓️ {msj.date}</h3>
-              {/* <p>{msj.date}</p> */}
-              {/* {console.log(msj)} */}
               <p>{msj.content}</p>
             </li>
           ))}
@@ -33,14 +30,12 @@ export default function Messages({ messages }) {
 export async function getServerSideProps(context) {
   try {
     const client = await clientPromise;
-
     const db = client.db("gasparindb");
 
     const messages = await db
       .collection("messages")
       .find({})
-      // .sort({ date: 1 })
-      // .limit(20)
+      .sort({ date: -1 })
       .toArray();
 
     return {
@@ -48,5 +43,8 @@ export async function getServerSideProps(context) {
     };
   } catch (e) {
     console.error(e);
+    return {
+      props: { messages: [] },
+    };
   }
 }

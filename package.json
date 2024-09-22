@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
     "mongodb": "^4.1.3",
