@@ -43,7 +43,7 @@ export default function Home({ isConnected, latestTitle }) {
           <h3 className="subtitle">No connection ❌</h3>
         )}
 
-        <h2 className="title">{latestTitle || "Any message? :)"}</h2>
+        <p className="custom-title">{latestTitle || "Any message? :)"}</p>
         {/* <Link href="/edit-title">
           <a className="editLink">Edit Title</a>
         </Link> */}
@@ -114,6 +114,11 @@ export default function Home({ isConnected, latestTitle }) {
           font-size: 1.5rem;
           padding: 0.5rem;
           margin-top: 1rem;
+        }
+        .custom-title {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin: 1rem 0;
         }
       `}</style>
     </div>
