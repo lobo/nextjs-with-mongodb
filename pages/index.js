@@ -50,7 +50,7 @@ export default function Home({ isConnected }) {
 
         <h2 className="title">Any message? :) </h2>
 
-        
+
         <form style={{ width: "100%", display: "block" }} onSubmit={submitForm}>
           <textarea
             className="mediumfont"
