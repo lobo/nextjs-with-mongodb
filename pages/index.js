@@ -67,12 +67,9 @@ export default function Home({ isConnected, latestTitle }) {
             {loading ? "Sending..." : "Send! 🚀"}
           </button>
         </form>
-                  <a href="+54 911 2372 4985" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-align: center; border-radius: 4px; text-decoration: none; font-size: 16px;">
-    Click me!
-</a>
       </main>
 
-
+      <a href="tel:+1123724985">HOLA BOB ESPONJA!</a>
       <footer>"I solemnly swear that I am up to no good -- 11 2372 4985"</footer>
 
       <style jsx>{`
