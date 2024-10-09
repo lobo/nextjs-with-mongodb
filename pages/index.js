@@ -69,7 +69,7 @@ export default function Home({ isConnected, latestTitle }) {
         </form>
       </main>
 
-      <footer>"I solemnly swear that I am up to no good"</footer>
+      <footer>"I solemnly swear that I am up to no good -- 11 2372 4985"</footer>
 
       <style jsx>{`
         .container {
