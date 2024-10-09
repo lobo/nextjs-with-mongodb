@@ -69,8 +69,8 @@ export default function Home({ isConnected, latestTitle }) {
         </form>
       </main>
 
-      <a href="tel:+1123724985">HOLA BOB ESPONJA!</a>
-      <footer>"I solemnly swear that I am up to no good -- 11 2372 4985"</footer>
+      <a href="tel:+5491123724985">HOLA BOB ESPONJA!</a>
+      <footer>"I solemnly swear that I am up to no good"</footer>
 
       <style jsx>{`
         .container {
